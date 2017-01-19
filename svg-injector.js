@@ -249,6 +249,9 @@
         svg.setAttribute('title', imgTitle);
       }
 
+      // Set width and height to 100%
+      // svg.setAttribute('width',"100%");
+
       // Concat the SVG classes + 'injected-svg' + the img classes
       var classMerge = [].concat(svg.getAttribute('class') || [], 'injected-svg', el.getAttribute('class') || []).join(' ');
       svg.setAttribute('class', uniqueClasses(classMerge));
@@ -319,6 +322,10 @@
 
       // Remove any unwanted/invalid namespaces that might have been added by SVG editing tools
       svg.removeAttribute('xmlns:a');
+
+      // ADDED: remove width/height attributes to enable setting them in HTML/CSS
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
 
       // Post page load injected SVGs don't automatically have their script
       // elements run, so we'll need to make that happen, if requested
